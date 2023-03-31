@@ -1,0 +1,62 @@
+1. How many xml files did you have in your project?can we have more than one?
+ We can have multiple testng.xml file to segregate the tests based on the different modules/websites in our project.
+
+2.How do you ensure if your test is successful or not? (ans:by using assert/ verify)
+Assertions in TestNG are a way to verify that the expected result and the actual result matched or not. If we could decide the outcome on different small methods using assertions in our test case, we can determine whether our test failed or passed overall. An example of assertion can be logging into the website, checking the title of the webpage, verifying the functionality of an input box that takes only integers, etc.
+
+We should remember that an assertion in TestNG is successful only if there are no exceptions thrown during the test case execution. TestNG asserts (or assertions) popularly validate the results in TestNG using selenium.
+
+What is the difference between assert and verify in testing?
+Image result for How do you ensure if your test is successful or not? (ans:by using assert/ verify)
+In the case of the “Assert” command, as soon as the validation fails the execution of that particular test method is stopped. Following that the test method is marked as failed. Whereas, in the case of “Verify”, the test method continues execution even after the failure of an assertion statement.
+
+3.How do you do data driven testing?
+Data-driven testing can be carried out through TestNG using its @DataProvider annotation. A method with @DataProvider annotation over it returns a 2D array of the object where the rows determine the number of iterations and columns determine the number of input parameters passed to the Test method with each iteration.
+
+4.How do you run test cases parallely?
+Parallel testing is an approach in which independent tests are run parallel to reduce overall test execution time. A tester runs two or more versions of the software concurrently with the same input or test methods. Each test can be run on multiple devices, browsers, and OS combinations.
+
+The parallel testing process can be applied to a single application, multiple applications, or even multiple components of an application. Parallel execution in TestNG can be achieved at different levels – threads, methods, etc.
+
+Parallel testing was introduced to replace the traditional approach of sequential testing. As the name suggests, in sequential test execution tests are executed one after another, which is more time-consuming.
+Parallel testing is a powerful approach that allows you to reduce the time taken to perform automation testing. There are various reasons that make it important for testers to adopt parallel testing in Selenium. Some of the most popular reasons are:
+
+1.Accelerated Test Execution Speed
+2.Increased Test Coverage and Wider Compatibility
+3.Overcome the Testing Bottleneck
+4.Fix Bugs Earlier
+5.Flexibility
+
+The TestNG test automation framework allows you to run tests in parallel or multithreaded mode by utilizing the Multi-Threading concept of Java. Multi-Threading is the process of executing multiple threads simultaneously, without any dependence on each other. Therefore, exceptions occurring on one thread won’t affect the others. In TestNG, we enable parallel testing by making required changes in the configuration file – TestNG XML file.
+
+5. Advantages of testNG over junit?
+Advantages of TestNG over JUnit
+In TestNG, annotations are easier to understand than Junit.
+It produces the HTML reports for implementation.
+It also generates the Logs.
+TestNG enables you to group the test cases easily which is not possible in JUnit.
+
+6.can we have dependency among tests? explain with an example
+
+
+7.how do you run only the failed test cases?
+Steps To follow:
+After the first run of an automated test run. Right click on Project – Click on Refresh.
+A folder will be generated named “test-output” folder. Inside “test-output” folder, you could find “testng-failed. xml”
+Run “testng-failed. xml” to execute the failed test cases again.
+
+8.8.What are the different ways you are aware of running the xml file? (ans: 1. through IDE, Through build tool-maven or ant, through cmd)
+Through IDE, through build tool-maven
+
+9.have you prioritized testscripts in your projects?
+When you have multiple test cases and want them to run in a particular order, you can use the Priority attribute to set test priority in TestNG.
+What is the default priority of test cases in TestNG?
+By default, priority will be zero. If the priority is not mentioned explicitly, priority=0 will be used for all test cases. A lower number means earlier execution.
+
+10.Can you convert junit test scripts to testing?how?
+The easiest way to convert your JUnit tests to TestNG is to use the Eclipse TestNG plug-in refactoring support. You will find a full description of its features in the Eclipse section.
+
+11.How can you get to know from the reports generated that which  group of test cases are executed and which are not? (ans: using include and exclude tags under grouptags in testing.xml file)
+
+
+12.

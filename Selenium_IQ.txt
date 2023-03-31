@@ -1,0 +1,201 @@
+1.What is the difference between Selenium IDE, Selenium RC and WebDriver?
+Selenium IDE (Integrated Development Environment) is a Firefox plugin. It is the simplest framework in the Selenium Suite. It allows us to record and playback the scripts. Even though we can create scripts using Selenium IDE, we need to use Selenium RC or Selenium WebDriver to write more advanced and robust test cases.
+
+2.Difference between css and xpath?
+An important difference between CSS and XPath locators in Selenium is that CSS looks for elements going down the DOM, while XPath allows you to navigate both up and down. This means that using XPath, you can find child web elements and then easily capture their parent or other ancestor.
+
+3.Can we enter text without using 'sendKeys()'?
+We can input text in the text box without the method sendKeys with thehelp of the JavaScript Executor. Selenium executes JavaScript commands with the help of the executeScript method. The JavaScript command to be run is passed as parameter to the method.
+
+4.How can you find if an element in displayed on the screen?
+The isDisplayed method in Selenium verifies if a certain element is present and displayed. If the element is displayed, then the value returned is true. If not, then the value returned is false.
+
+5.Explain what is assertion in Selenium and what are the types of assertion?
+Assertions verify that the state of the application is same to what we are expecting. Selenium Assertions can be of three types: “assert”, “verify”, and ” waitFor”. When an “assert” fails, the test is aborted. When a “verify” fails, the test will continue execution, logging the failure.A “waitFor” command waits for some condition to become true.
+
+6.How do you use AutoIt?
+Upload file in Selenium using AutoIt
+Step 1: Identify the Windows control. Navigate to Practice Form page of ToolsQA. ...
+Step 2: Build an AutoIt script using identified windows control. ...
+Step 3: Compile the .au3 script and convert it in to .exe file. ...
+Step 4: Call the .exe file in to the Selenium test case.
+
+7.How do we handle frame related issues in selenium?
+We can handle frames in Selenium with the help of following methods −
+
+switchTo().frame( frameNumber)
+
+This method uses the frame id as the parameter. The index of frame id starts from 0. NoSuchFrameException is thrown if the frame is not found.
+
+switchTo().frame( frameName)
+
+This method uses the frame name as defined by the developer as the parameter. The frame name is considered a String and is enclosed in quotes. NoSuchFrameException is thrown if the frame is not found.
+
+switchTo().frame( WebElement)
+
+This method uses the webelement as the parameter. NoSuchFrameException is thrown if the frame is not found. StaleElementReferenceException if the frame is no longer active.
+
+8.How you will handle dynamic elements in selenium?
+Sometimes IDs and classes of the web element keep changing. Such web elements are called Dynamic web elements.These are database based elements and its values get refreshed everytime the database gets updated
+Following are the methods:
+
+1.Absolute Path method
+2.Use Relative XPath using contains or starts with text
+3.Identify by index
+4.Use Multiple attributes to locate an element
+
+9.How to add/upload Images or files from System?
+Uploading a file using Selenium
+Choose File Button: On clicking this button we can choose the file we wish to upload from our machine.
+Input type: The Input type of the Choose File button in the above image is of file type.
+Upload Button: On clicking, this button upload function is performed.
+
+10.How do we use a date picker in selenium ?
+We can select the date picker in Selenium. It is slightly difficult to handle calendar controls as the day, month and year selection can be represented via different UI.
+
+Sometimes they are represented by the dropdown or by forward and backward controls. Let us select the date picker as shown below.
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.support.ui.Select;
+public class DatePicker{
+   public static void main(String[] args) {
+      System.setProperty("webdriver.chrome.driver",
+      "C:\Users\ghs6kor\Desktop\Java\chromedriver.exe");
+      WebDriver driver = new ChromeDriver();
+      String frdate = "20";
+      String todate = "26";
+      driver.get("https://jqueryui.com/datepicker/#date−range");
+      // wait of 4 seconds
+      driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
+      // maximize browser
+      driver.manage().window().maximize();
+      // identify frame and switch to it
+      WebElement e = driver.findElement(By.xpath("//*[@id='content']/iframe"));
+      driver.switchTo().frame(e);
+      // choose from date
+      driver.findElement(By.xpath("//input[@id='from']")).click();
+      Thread.sleep(1000);
+      // choose month from dropdown
+      WebElement m = driver
+      .findElement(By.xpath("//div/select[@class='ui− datepicker−month']"));
+      Select s = new Select(m);
+      s.selectByVisibleText("Jan");
+      Thread.sleep(1000);
+      // select day
+      driver.findElement(By.xpath("//td[not(contains(@class,'ui−datepicker− month'))]/a[text()='"+frdate+"']")).click();
+      Thread.sleep(1000);
+      // choose to date
+      driver.findElement(By.xpath("//input[@id='to']")).click();
+      Thread.sleep(1000);
+      // choose month from dropdown
+      WebElement n = driver
+      .findElement(By.xpath("//div/select[@class='ui− datepicker−month']"));
+      Select sel = new Select(n);
+      sel.selectByVisibleText("Feb");
+      Thread.sleep(1000);
+      // select day
+      driver.findElement(By.xpath("//td[not(contains(@class,'ui−datepicker− month'))]/a[text()='"+todate+"']")).click();
+      Thread.sleep(1000);
+   }
+}
+
+11.How do we perform scroll down operation?
+The JavaScriptExecutor provides an interface that enables QAs to run JavaScript methods from Selenium scripts. Hence, to scroll up or down with Selenium, a JavaScriptExecutor is a must. The scrollBy() method involves two parameters, x, and y, that represent the horizontal and vertical pixel values, respectively.
+
+Scenario 1: To scroll down the web page by pixel.
+
+Javascript method ScrollBy() scrolls the web page to the specific number of pixels. The syntax of ScrollBy() methods is : executeScript("window. scrollBy(x-pixels,y-pixels)");
+
+12.What are the different types locators in selenium?
+Selenium supports 8 different types of locators namely id, name, className, tagName, linkText, partialLinkText, CSS selector and xpath. Using id is one of the most reliable and fast methods of element recognition.
+
+13.How do you get all elements with same tag name?
+Selenium WebDriver's By class provides a tagName() method to find elements by their HTML tag name. This is similar to the getElementsByTagName() DOM method in JavaScript. This is used when you want to locate elements using their tag name, for example, locating all <tr> tags in a table.
+
+14. What is selenium GRID?
+Selenium Grid is a smart proxy server that makes it easy to run tests in parallel on multiple machines. This is done by routing commands to remote web browser instances, where one server acts as the hub. This hub routes test commands that are in JSON format to multiple registered Grid nodes.
+
+15.How can you automate windows pop-up in selenium?
+In Selenium Webdriver, there are multiple methods to handle popups:
+Driver. getWindowHandles(); In order to handle the opened windows by Selenium Webdriver, you can use Driver. ...
+Driver. getWindowHandle(); When the webpage is loaded, you can handle the main window by using driver.
+
+16. How do you validate an option is in a dropdown as default option?
+The default value of dropdown in selenium web driver can be selected in the following way: String a = driver. findElement (By. xpath ( "//select [@ id='eehdlt1']" ) ) .
+
+17.What is the difference between '/' and '//'?
+Difference between “/” and “//” in XPath
+1. Single slash is used to create absolute XPath whereas Double slash is used to create relative XPath. 2. Single slash selects an element from the root node.
+
+18.How do you handle alert windows?
+The following methods are useful to handle alerts in Selenium:
+Void dismiss(): This method is used when the 'Cancel' button is clicked in the alert box. ...
+Void accept(): This method is used to click on the 'OK' button of the alert. ...
+String getText(): This method is used to capture the alert message.
+
+19.How do we handle switching between windows in selenium?
+In Selenium, when we have multiple windows in any web application, the approach may need to switch control among several windows i.e from one window to another to perform any action and we can achieve this by using switchto(); method.
+
+20..Difference b/w verify and assert? When assert fails the execution why do you need to use it?
+There are differences between Assert and Verify in Selenium. Both of these are used to verify if a webelement is available on the page. If the Assert fails, the test execution shall be stopped.
+
+The moment an Assertion has not passed in a step, the test steps after that step shall be hopped. However, this can be avoided by adding a try-catch block and incorporating the Assertion within this block.
+
+So the flow of the program execution continues if the Assertion yields a true condition.
+
+21.How you can perform parallel execution in selenium?
+Parallel Test Execution in Selenium using Configuring TestNG XML in TestNG
+Provides seamless parallel test execution.
+Supports parameterization in TestNG using @Parameter annotation.
+Allows grouping of test methods and group execution.
+Allows executing test cases inside multiple Java class files.
+
+22.How will you automate web table?
+1.use List <WebElement> Create an xpath for the table element till /tr and get a count of the same. ( This will give us the row count) ...
+2.Once, we get the row and column count, simply apply loop with i rows and j columns and perform your thing.
+
+23.How do you perform cross browser testing?
+To execute test cases with different browsers in the same machine at the same time we can integrate TestNG framework with Selenium WebDriver.
+This testing.xml will map with the Test Case.Here because the testing.xml has two Test tags (‘ChromeTest’,’FirefoxTest’),this test case will execute two times for 2 different browsers.
+
+First Test ‘ChromeTest’ will pass the value of parameter ‘browser’ as ‘chrome’ so ChromeDriver will be executed. This test case will run on Chrome browser.
+
+Second Test ‘FirefoxTest’ will pass the value of parameter ‘browser’ as ‘Firefox’ so FirefoxDriver will be executed. This test case will run on FireFox browser.
+
+24.When do we use findElement() and findElements()?
+Selenium WebDriver defines two methods for identifying the elements, they are findElement and findElements . findElement: This command is used to uniquely identify a web element within the web page. findElements: This command is used to uniquely identify the list of web elements within the web page.
+
+25.How do we select drop down content in Selenium?
+Selenium WebDriver- Handling drop-downs
+selectByIndex - It is used to select an option based on its index, beginning with 0. dropdown.selectByIndex(5); ...
+selectByValue - It is used to select an option based on its 'value' attribute. ...
+selectByVisibleText - It is used to select an option based on the text over the option.
+
+26.What are the different types of waits available in WebDriver? Differences
+In Selenium, “Waits” play an important role in executing tests. There are 3 types of waits. They are...
+1.Implicit wait
+2.Explicit wait
+3. Fluent wait
+
+Difference Between Implicit Wait Vs Explicit Wait
+Following is the main difference between implicit wait and explicit wait in Selenium:
+
+Implicit Wait	Explicit Wait
+Implicit Wait time is applied to all the elements in the script
+Explicit Wait time is applied only to those elements which are intended by us
+In Implicit Wait, we need not specify “ExpectedConditions” on the element to be located
+In Explicit Wait, we need to specify “ExpectedConditions” on the element to be located
+It is recommended to use when the elements are located with the time frame specified in Selenium implicit wait
+It is recommended to use when the elements are taking long time to load and also for verifying the property of the element like(visibilityOfElementLocated, elementToBeClickable,elementToBeSelected)
+
+Conclusion:
+Implicit, Explicit and Fluent Wait are the different waits used in Selenium. Usage of these waits are totally based on the elements which are loaded at different intervals of time. It is always not recommended to use Thread.Sleep() while Testing our application or building our framework.
+
+27.How to capture screenshot in WebDriver?
+Selenium webdriver can automatically take screenshots during the execution. But if users need to capture a screenshot on their own, they need to use the TakeScreenshot method which notifies the WebDrive to take the screenshot and store it in Selenium.
+Step 1) Convert web driver object to TakeScreenshot
+Step 2) Call getScreenshotAs method to create image file
+Step 3) Copy file to Desired Location
